@@ -47,13 +47,27 @@ namespace GradeBook.GradeBooks
 			}	
 		}
 
-
-		class ReverseComparer : IComparer<double>
+		public override void CalculateStatistics()
 		{
-			public int Compare(double x, double y)
+			if (Students.Count < 5)
 			{
-				return y.CompareTo(x);
+				Console.WriteLine("Ranked grading requires at least 5 students with grades in order to properly calculate a student's overall grade.");
+				return;
 			}
+
+			base.CalculateStatistics();
 		}
+
+		public override void CalculateStudentStatistics(string name)
+		{
+			if (Students.Count < 5)
+			{
+				Console.WriteLine("Ranked grading requires at least 5 students with grades in order to properly calculate a student's overall grade.");
+				return;
+			}
+
+			base.CalculateStatistics();
+		}
+
 	}
 }
